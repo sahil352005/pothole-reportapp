@@ -70,7 +70,7 @@ const Navbar = () => {
                   Report Pothole
                 </Link>
                 <Link 
-                  to="/map" 
+                  to="/view-map" 
                   className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-500/10 transition duration-300"
                 >
                   View Map

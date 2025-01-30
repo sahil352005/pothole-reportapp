@@ -8,6 +8,7 @@ import Report from './pages/Report';
 import AdminDashboard from './pages/AdminDashboard';
 import Signup from './pages/Signup';
 import AdminPanel from './pages/AdminPanel';
+import ViewMap from './pages/ViewMap';
 
 // Protected Route Component
 const ProtectedRoute = ({ children, requireAdmin }) => {
@@ -51,6 +52,7 @@ function App() {
               } 
             />
             <Route path="/admin-panel" element={<AdminPanel />} />
+            <Route path="/view-map" element={<ViewMap />} />
           </Routes>
         </div>
       </Router>

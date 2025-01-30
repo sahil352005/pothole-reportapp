@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -296,6 +297,11 @@ body {
   transform: translateX(-20px);
   opacity: 0;
   animation: slideIn 0.5s ease-out forwards;
+}
+
+.leaflet-container {
+  border-radius: 8px;
+  z-index: 1;
 }
 
 .progress-step:nth-child(1) { animation-delay: 0.1s; }
