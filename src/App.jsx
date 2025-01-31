@@ -10,6 +10,7 @@ import Signup from './pages/Signup';
 import AdminPanel from './pages/AdminPanel';
 import ViewMap from './pages/ViewMap';
 import GridMat from './pages/GridMat';
+import RewardsPage from './pages/RewardsPage';
 
 // Protected Route Component
 const ProtectedRoute = ({ children, requireAdmin }) => {
@@ -55,6 +56,7 @@ function App() {
             <Route path="/admin-panel" element={<AdminPanel />} />
             <Route path="/view-map" element={<ViewMap />} />
             <Route path="/gridmat" element={<GridMat />} />
+            <Route path="/rewards" element={<RewardsPage />} />
           </Routes>
         </div>
       </Router>
