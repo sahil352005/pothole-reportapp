@@ -203,21 +203,24 @@ const Home = () => {
           />
         </div>
 
-        <div className="flex-1 pl-4">
-          <h3 className="text-xl font-semibold mb-2">Our Product</h3>
-          <p className="text-gray-600 mb-4">
-            Our pothole reporting app allows users to easily report potholes in their area. 
-            With a user-friendly interface, you can take a photo, mark the location, and submit your report in seconds.
-          </p>
-          <ul className="list-disc list-inside mb-4">
-            <li>Easy photo capture</li>
-            <li>Real-time updates on repairs</li>
-            <li>Earn rewards for verified reports</li>
-          </ul>
-          <Link to="/signup" className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
-            Sign Up Now
-          </Link>
-        </div>
+        <div className="flex-1 pl-6">
+  <h3 className="text-2xl font-bold text-gray-800 mb-3">Our Product</h3>
+  <p className="text-gray-700 leading-relaxed mb-5">
+    Our pothole reporting app allows users to easily report potholes in their area. 
+    With a user-friendly interface, you can take a photo, mark the location, and submit your report in seconds.
+  </p>
+  <ul className="space-y-2 text-gray-700 mb-5">
+    <li className="pl-2">📸 Easy photo capture</li>
+    <li className="pl-2">📍 Real-time updates on repairs</li>
+    <li className="pl-2">🏆 Earn rewards for verified reports</li>
+  </ul>
+  <Link 
+    to="/signup" 
+    className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+    Sign Up Now
+  </Link>
+</div>
+
       </div>
 
       {/* Features Section */}
@@ -309,7 +312,7 @@ const Home = () => {
                     <div className="flex-1">
                       <div className="relative">
                         <img 
-                          src={story.before} 
+                          src="src\assets\before-1.jpg"
                           alt="Before repair" 
                           className="w-full h-48 object-cover rounded-lg"
                         />
@@ -328,7 +331,7 @@ const Home = () => {
                     <div className="flex-1">
                       <div className="relative">
                         <img 
-                          src={story.after} 
+                          src="src\assets\after-1.jpg"
                           alt="After repair" 
                           className="w-full h-48 object-cover rounded-lg"
                         />
