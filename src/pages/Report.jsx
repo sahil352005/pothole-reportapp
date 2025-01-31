@@ -216,7 +216,7 @@ const Report = () => {
   ) : null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 relative">
+    <div className="min-h-screen bg-gray-900 relative ">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-repeat opacity-5 pointer-events-none"
            style={{
