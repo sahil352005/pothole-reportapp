@@ -91,6 +91,13 @@ const Navbar = () => {
                   </Link>
                 )}
                 
+                <Link 
+                  to="/gridmat" 
+                  className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-500/10 transition duration-300"
+                >
+                  GridMat
+                </Link>
+                
                 <button
                   onClick={handleLogout}
                   className="bg-red-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-600 transition duration-300"

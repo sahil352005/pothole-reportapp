@@ -73,43 +73,42 @@ const PotholeMap = () => {
   };*/
 
   return (
-    <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg">
-      <div className="p-4 flex flex-row items-center justify-between border-b">
-        <h2 className="text-xl font-bold">Mumbai Pothole Tracker</h2>
-        <div className="flex items-center space-x-2">
-          <MapIcon className="w-6 h-6" />
-          <span className="text-sm text-gray-500">
-            {potholes.length} Reports
-          </span>
+    <div className="flex justify-center items-center min-h-screen bg-gray-900">
+      <div className="w-full max-w-6xl min-h-[600px] bg-white rounded-lg shadow-lg">
+        <div className="p-6 flex flex-row items-center justify-between border-b bg-blue-600 text-white rounded-t-lg">
+          <h2 className="text-2xl font-bold">Mumbai Pothole Tracker</h2>
+          <div className="flex items-center space-x-2">
+            <MapIcon className="w-6 h-6" />
+            <span className="text-lg">{potholes.length} Reports</span>
+          </div>
         </div>
-      </div>
-      
-      <div className="p-4">
-        <div className="bg-gray-100 rounded-lg p-4 h-96 relative">
-          <div id="map" className="absolute inset-0 rounded-lg" style={{ height: '400px' }} />
-          
-         /* {/* Controls */}
-
-          
-          {/* Legend */}
-          <div className="absolute top-4 right-4 bg-white p-2 rounded-lg shadow-lg z-[400]">
-            <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 bg-red-500 rounded-full" />
-              <span>High Severity</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 bg-yellow-500 rounded-full" />
-              <span>Medium Severity</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 bg-green-500 rounded-full" />
-              <span>Low Severity</span>
+  
+        <div className="p-6">
+          <div className="bg-gray-100 rounded-lg p-4 h-[500px] relative">
+            <div id="map" className="absolute inset-0 rounded-lg" style={{ height: '100%' }} />
+  
+            {/* Legend */}
+            <div className="absolute top-4 right-4 bg-white p-2 rounded-lg shadow-lg z-10">
+              <div className="flex items-center space-x-2">
+                <div className="w-4 h-4 bg-red-500 rounded-full" />
+                <span className="text-sm">High Severity</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-4 h-4 bg-yellow-500 rounded-full" />
+                <span className="text-sm">Medium Severity</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-4 h-4 bg-green-500 rounded-full" />
+                <span className="text-sm">Low Severity</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   );
+    
+    
 };
 
 export default PotholeMap;
