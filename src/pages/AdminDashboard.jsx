@@ -290,7 +290,15 @@ const AdminDashboard = () => {
 
                   <div className="flex items-center text-gray-500">
                     <MapPinIcon className="h-5 w-5 mr-2" />
-                    <span className="text-sm">{report.location || 'Location pending'}</span>
+                    <div>
+                      <span className="text-sm block">{report.location || 'Location pending'}</span>
+                      {report.coordinates && (
+                        <span className="text-xs text-gray-400 block">
+                          Lat: {report.coordinates.latitude.toFixed(6)}, 
+                          Lon: {report.coordinates.longitude.toFixed(6)}
+                        </span>
+                      )}
+                    </div>
                   </div>
 
                   <div className="flex items-center text-gray-500">

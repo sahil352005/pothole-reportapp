@@ -43,24 +43,12 @@ const Home = () => {
   const RewardModal = () => (
     <div className={`fixed inset-0 bg-black/50 flex items-center justify-center z-50 transition-opacity duration-300 ${showRewardModal ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
       <div className="relative bg-white rounded-xl p-8 max-w-md w-full mx-4 transform transition-all duration-500">
-        {/* Close button */}
         <button 
           onClick={() => setShowRewardModal(false)}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
         >
           <XMarkIcon className="h-6 w-6" />
         </button>
-
-        {/* Gift Box Animation */}
-        <div className={`gift-box ${showRewardModal ? 'open' : ''}`}>
-          <div className="box">
-            <div className="lid">
-              <div className="bow"></div>
-            </div>
-            <div className="box-body"></div>
-          </div>
-          <div className="prize">🏆</div>
-        </div>
 
         <h3 className="text-2xl font-bold text-center mt-6 mb-4">
           Exciting Rewards Await!
@@ -89,6 +77,7 @@ const Home = () => {
           <XMarkIcon className="h-6 w-6" />
         </button>
 
+        <h3 className="text-xl font-semibold mb-4">Report a Pothole</h3>
         <div className="camera-interface">
           <div className="camera-lens"></div>
           <div className="camera-options grid grid-cols-3 gap-4 mt-8">
@@ -111,13 +100,6 @@ const Home = () => {
               <span>Use Webcam</span>
             </button>
           </div>
-        </div>
-
-        <div className="text-center mt-8">
-          <h3 className="text-xl font-semibold mb-4">Report a Pothole</h3>
-          <p className="text-gray-600">
-            Choose how you want to capture the pothole:
-          </p>
         </div>
       </div>
     </div>
@@ -184,10 +166,8 @@ const Home = () => {
     <div className="min-h-screen bg-gray-100">
       {/* Hero Section with Background Image */}
       <div className="relative bg-blue-600 text-white">
-        {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/50 z-10"></div>
         
-        {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -195,7 +175,6 @@ const Home = () => {
           }}
         ></div>
 
-        {/* Content */}
         <div className="relative z-20 container mx-auto px-4 py-32">
           <div className="max-w-2xl">
             <h1 className="text-5xl font-bold mb-6 drop-shadow-lg">
@@ -216,16 +195,14 @@ const Home = () => {
 
       {/* New Section for Image and Product Information */}
       <div className="flex justify-between items-center p-8 bg-white shadow-md rounded-lg mt-8">
-        {/* Left Side: Image of Man Working on Pothole */}
         <div className="flex-1">
           <img 
-            src="https://www.pothole123.com/wp-content/uploads/2023/02/How-Is-Pothole-Patching-Done.jpg" // Unsplash image URL
+            src="https://www.pothole123.com/wp-content/uploads/2023/02/How-Is-Pothole-Patching-Done.jpg" 
             alt="Man working on pothole"
             className="w-full h-auto rounded-lg"
           />
         </div>
 
-        {/* Right Side: Product Information */}
         <div className="flex-1 pl-4">
           <h3 className="text-xl font-semibold mb-2">Our Product</h3>
           <p className="text-gray-600 mb-4">
@@ -411,8 +388,6 @@ const Home = () => {
       <RewardModal />
       <CameraModal />
       <ProgressModal />
-
-    
     </div>
   );
 };

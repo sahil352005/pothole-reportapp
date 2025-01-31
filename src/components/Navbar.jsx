@@ -42,7 +42,7 @@ const Navbar = () => {
         isScrolled 
           ? 'bg-gray-800/95 backdrop-blur-sm shadow-lg' 
           : 'bg-transparent'
-      }`}
+      } mb-4`}
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
@@ -98,6 +98,13 @@ const Navbar = () => {
                   GridMat
                 </Link>
                 
+                <Link 
+                  to="/employment-opportunities" 
+                  className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-500/10 transition duration-300"
+                >
+                  Employment Opportunities
+                </Link>
+
                 <button
                   onClick={handleLogout}
                   className="bg-red-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-600 transition duration-300"

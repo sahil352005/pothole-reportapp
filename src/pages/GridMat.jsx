@@ -3,12 +3,21 @@ import React from 'react';
 const GridMat = () => {
     return (
         <div className="gridmat-container container mx-auto p-4">
-            <h1 className="text-3xl font-bold text-center mb-6">GridMat for Roads</h1>
+            {/* Hero Section */}
+            <div className="relative bg-blue-600 text-white py-16 mb-8">
+                <div className="absolute inset-0 bg-black/50"></div>
+                <h1 className="text-4xl font-bold text-center relative z-10">GridMat for Roads</h1>
+                <p className="text-lg text-center relative z-10 mt-4">
+                    Discover the innovative material that is transforming road construction.
+                </p>
+            </div>
+
             <img 
                 src="https://static.wixstatic.com/media/59c0e8_ec68d75c5a034e54a8ac84aaaefdbb63~mv2.jpg/v1/fill/w_980,h_811,al_c,q_90,enc_avif,quality_auto/59c0e8_ec68d75c5a034e54a8ac84aaaefdbb63~mv2.jpg" 
                 alt="GridMat Overview" 
                 className="gridmat-image mb-4 w-full h-auto rounded-lg shadow-md"
             />
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex flex-col items-center">
                     <img 
@@ -29,6 +38,7 @@ const GridMat = () => {
                     <p className="mt-2 text-center">GridMat Application - Effective Road Construction</p>
                 </div>
             </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                 <div className="flex flex-col items-center">
                     <img 
@@ -64,6 +74,19 @@ const GridMat = () => {
                     <p className="mt-2 text-center">Comparisons of GridMats</p>
                 </div>
             </div>
+
+            <div className="flex flex-col items-center mt-6">
+                <img 
+                    src="https://static.wixstatic.com/media/2a6e23_f2cd9e70a2734672b1297a808cb03312~mv2.jpeg/v1/crop/x_0,y_12,w_1882,h_926/fill/w_624,h_307,al_c,q_90,enc_avif,quality_auto/90A01048-3E61-4203-9CAC-6C840A29283E.jpeg" 
+                    alt="Environmental Impact & SDG GridMats" 
+                    width="624" 
+                    height="307" 
+                    loading="lazy" 
+                    className="gridmat-image w-full h-auto rounded-lg shadow-md"
+                />
+                <p className="mt-2 text-center">Environmental Impact & SDG GridMats</p>
+            </div>
+
             <p className="mt-4 text-center">
                 GridMat is a high-performance material designed for road construction. 
                 It is made from durable polymers that provide excellent strength and stability. 

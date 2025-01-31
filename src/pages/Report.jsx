@@ -18,6 +18,8 @@ const Report = () => {
   const [loading, setLoading] = useState(false);
   const [severity, setSeverity] = useState(null);
   const [location, setLocation] = useState('');
+  const [coordinates, setCoordinates] = useState(null);
+  const [loadingLocation, setLoadingLocation] = useState(false);
   const videoRef = useRef(null);
   const fileInputRef = useRef(null);
   const [error, setError] = useState('');
@@ -95,11 +97,48 @@ const Report = () => {
     return mockSeverities[Math.floor(Math.random() * mockSeverities.length)];
   };
 
-  // Modified submit handler
+  // Add this new function to get current location
+  const getCurrentLocation = () => {
+    setLoadingLocation(true);
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const { latitude, longitude } = position.coords;
+          
+          try {
+            // Reverse geocoding to get address from coordinates
+            const response = await fetch(
+              `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+            );
+            const data = await response.json();
+            
+            setLocation(data.display_name || 'Location found');
+            setCoordinates({ latitude, longitude });
+            setLoadingLocation(false);
+          } catch (error) {
+            console.error("Error getting location details:", error);
+            setLocation(`${latitude}, ${longitude}`);
+            setCoordinates({ latitude, longitude });
+            setLoadingLocation(false);
+          }
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+          setError("Could not get your location. Please enter manually.");
+          setLoadingLocation(false);
+        }
+      );
+    } else {
+      setError("Geolocation is not supported by your browser");
+      setLoadingLocation(false);
+    }
+  };
+
+  // Modify the handleSubmit function to include coordinates
   const handleSubmit = async () => {
     if (!preview) return;
     if (!location.trim()) {
-      setError('Please enter the location');
+      setError('Please enter or detect the location');
       return;
     }
 
@@ -107,17 +146,17 @@ const Report = () => {
       setLoading(true);
       setError('');
 
-      // Analyze severity (mock)
       const detectedSeverity = await analyzeSeverity(preview);
       setSeverity(detectedSeverity);
 
-      // Save report to Firestore
+      // Save report to Firestore with coordinates
       await addDoc(collection(db, 'reports'), {
         userId: currentUser.uid,
         imageData: preview,
         severity: detectedSeverity,
         status: 'pending',
         location: location.trim(),
+        coordinates: coordinates || null, // Add coordinates to the document
         timestamp: serverTimestamp()
       });
 
@@ -125,6 +164,7 @@ const Report = () => {
       setPreview(null);
       setCaptureMode(null);
       setLocation('');
+      setCoordinates(null);
     } catch (error) {
       setError(error.message);
       console.error("Error submitting report:", error);
@@ -132,6 +172,41 @@ const Report = () => {
       setLoading(false);
     }
   };
+
+  // Update the Location Input section in the JSX
+  const LocationInput = () => (
+    <div className="space-y-2">
+      <label className="block text-sm font-medium text-gray-700">
+        Location Details
+      </label>
+      <div className="flex gap-2">
+        <div className="relative flex-1">
+          <MapPinIcon className="h-5 w-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
+          <input
+            type="text"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            placeholder="Enter the location or click detect"
+            className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+        </div>
+        <button
+          type="button"
+          onClick={getCurrentLocation}
+          disabled={loadingLocation}
+          className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+        >
+          <MapPinIcon className="h-5 w-5" />
+          {loadingLocation ? 'Detecting...' : 'Detect Location'}
+        </button>
+      </div>
+      {coordinates && (
+        <p className="text-sm text-gray-500">
+          Coordinates: {coordinates.latitude.toFixed(6)}, {coordinates.longitude.toFixed(6)}
+        </p>
+      )}
+    </div>
+  );
 
   // Add this in the JSX where you want to show errors
   const ErrorMessage = () => error ? (
@@ -255,22 +330,7 @@ const Report = () => {
                   </button>
                 </div>
 
-                {/* Location Input */}
-                <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Location Details
-                  </label>
-                  <div className="relative">
-                    <MapPinIcon className="h-5 w-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
-                    <input
-                      type="text"
-                      value={location}
-                      onChange={(e) => setLocation(e.target.value)}
-                      placeholder="Enter the location or street name"
-                      className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
-                  </div>
-                </div>
+                <LocationInput />
 
                 {/* Submit Button */}
                 {!loading && !severity && (

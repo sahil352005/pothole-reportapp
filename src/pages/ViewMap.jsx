@@ -73,7 +73,7 @@ const PotholeMap = () => {
   };*/
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-900">
+    <div className="flex justify-center items-center min-h-screen bg-gray-900 mb-4">
       <div className="w-full max-w-6xl min-h-[600px] bg-white rounded-lg shadow-lg">
         <div className="p-6 flex flex-row items-center justify-between border-b bg-blue-600 text-white rounded-t-lg">
           <h2 className="text-2xl font-bold">Mumbai Pothole Tracker</h2>
